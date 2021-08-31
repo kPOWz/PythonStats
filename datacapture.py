@@ -19,7 +19,7 @@ class DataCapture:
   def __init__(self):
         self.raw_data = [None for n in range(self.max_integer)]
 
-  def add(self, n: int) -> int:
-    self.raw_data[n] = n;
+  def add(self, n: int):
+    self.raw_data[n] = n
     return self.raw_data
   
