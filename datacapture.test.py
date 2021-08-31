@@ -17,5 +17,14 @@ class AddTest(unittest.TestCase):
         observed = data_capture.add(data_to_capture)
         self.assertEquals(data_to_capture, observed[data_to_capture])
 
+class BuildStatsTest(unittest.TestCase):
+
+    def test_build_stats_length_matches_added(self):
+        data_capture = DataCapture()
+        data_capture.add(1)
+        data_capture.add(1000)
+        
+        observed = data_capture.build_stats()
+        self.assertEquals(len(observed), 2)
 
 unittest.main(exit=False)

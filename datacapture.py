@@ -18,8 +18,14 @@ class DataCapture:
   max_integer = 1000 + 1;
   def __init__(self):
         self.raw_data = [None for n in range(self.max_integer)]
+        self.raw_data_condensed = []
 
   def add(self, n: int):
     self.raw_data[n] = n
     return self.raw_data
-  
+
+  def build_stats(self):
+    for n in self.raw_data:
+        if(n != None):
+            self.raw_data_condensed.append(n)
+    return self.raw_data_condensed
