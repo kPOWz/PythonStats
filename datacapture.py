@@ -15,9 +15,11 @@
 # stats.greater(4) # should return 2 (6 and 9 are the only two values greater than 4)
 
 class DataCapture:
+  max_integer = 1000;
   def __init__(self):
-        self.raw_data = []
+        self.raw_data = [None for n in range(self.max_integer)]
 
-  def add(self):
-    print("add not implemented")
+  def add(self, n: int) -> int:
+    self.raw_data[n] = n;
+    return self.raw_data
   
