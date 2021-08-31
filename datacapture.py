@@ -30,3 +30,7 @@ class DataCapture:
             self.raw_data_condensed.append(n)
             self.raw_data[n] = len(self.raw_data_condensed) - 1
     return self.raw_data_condensed
+
+  def less(self, n: int):
+    stats_lookup_index = self.raw_data[n];
+    return stats_lookup_index + 1 - stats_lookup_index;
