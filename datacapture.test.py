@@ -19,12 +19,12 @@ class AddTest(unittest.TestCase):
 
 class BuildStatsTest(unittest.TestCase):
 
-    def test_build_stats_length_matches_added(self):
+    def test_build_stats_matches_added(self):
         data_capture = DataCapture()
         data_capture.add(1)
         data_capture.add(1000)
         
         observed = data_capture.build_stats()
-        self.assertEquals(len(observed), 2)
+        self.assertEquals(observed, [1, 1000])
 
 unittest.main(exit=False)
