@@ -34,4 +34,5 @@ class DataCapture:
 
   def less(self, n: int):
     stats_lookup_index = self.raw_data[n];
-    return stats_lookup_index + 1 - stats_lookup_index;
+    count_items_less_than_n = stats_lookup_index;
+    return count_items_less_than_n;
