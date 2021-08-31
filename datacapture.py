@@ -16,6 +16,7 @@
 
 class DataCapture:
   max_integer = 1000 + 1;
+  zero_base_array_adjustment_factor = 1;
   def __init__(self):
         self.raw_data = [None for n in range(self.max_integer)]
         self.raw_data_condensed = []
@@ -28,7 +29,7 @@ class DataCapture:
     for n in self.raw_data:
         if(n != None):
             self.raw_data_condensed.append(n)
-            self.raw_data[n] = len(self.raw_data_condensed) - 1
+            self.raw_data[n] = len(self.raw_data_condensed) - self.zero_base_array_adjustment_factor
     return self.raw_data_condensed
 
   def less(self, n: int):
