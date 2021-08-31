@@ -28,4 +28,5 @@ class DataCapture:
     for n in self.raw_data:
         if(n != None):
             self.raw_data_condensed.append(n)
+            self.raw_data[n] = len(self.raw_data_condensed) - 1
     return self.raw_data_condensed

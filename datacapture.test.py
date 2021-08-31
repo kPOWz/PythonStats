@@ -26,5 +26,25 @@ class BuildStatsTest(unittest.TestCase):
         
         observed = data_capture.build_stats()
         self.assertEquals(observed, [1, 1000])
+    
+    def test_build_stats_records_lookup_indicies(self):
+        data_one = 1;
+        data_three = 3;
+        data_five = 5;
+        data_capture = DataCapture()
+        data_capture.add(data_one)
+        data_capture.add(data_three)
+        data_capture.add(5)
+        observered_before = data_capture.add(5)
+        self.assertEquals(observered_before[data_one], data_one)
+        self.assertEquals(observered_before[data_three], data_three)
+        self.assertEquals(observered_before[data_five], data_five)
+        
+        data_capture.build_stats()
+        observed_after = data_capture.raw_data;
+
+        self.assertEquals(observed_after[data_one], 0)
+        self.assertEquals(observed_after[data_three], 1)
+        self.assertEquals(observed_after[data_five], 2)
 
 unittest.main(exit=False)
