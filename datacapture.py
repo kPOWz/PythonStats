@@ -19,7 +19,7 @@ class DataCapture:
   zero_base_array_adjustment_factor = 1;
   def __init__(self):
         self.raw_data = [None for n in range(self.max_integer)]
-        self.raw_data_condensed = []
+        self.raw_data_ascending_condensed = []
 
   def add(self, n: int):
     self.raw_data[n] = n
@@ -28,9 +28,9 @@ class DataCapture:
   def build_stats(self):
     for n in self.raw_data:
         if(n != None):
-            self.raw_data_condensed.append(n)
-            self.raw_data[n] = len(self.raw_data_condensed) - self.zero_base_array_adjustment_factor
-    return self.raw_data_condensed
+            self.raw_data_ascending_condensed.append(n)
+            self.raw_data[n] = len(self.raw_data_ascending_condensed) - self.zero_base_array_adjustment_factor
+    return self.raw_data_ascending_condensed
 
   def less(self, n: int):
     stats_lookup_index = self.raw_data[n];
