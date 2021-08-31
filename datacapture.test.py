@@ -34,7 +34,7 @@ class BuildStatsTest(unittest.TestCase):
         data_capture = DataCapture()
         data_capture.add(data_one)
         data_capture.add(data_three)
-        data_capture.add(5)
+        data_capture.add(data_five)
         observered_before = data_capture.add(5)
         self.assertEquals(observered_before[data_one], data_one)
         self.assertEquals(observered_before[data_three], data_three)
