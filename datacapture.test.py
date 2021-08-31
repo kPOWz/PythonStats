@@ -35,16 +35,12 @@ class BuildStatsTest(unittest.TestCase):
         data_capture.add(data_one)
         data_capture.add(data_three)
         data_capture.add(data_five)
-        observered_before = data_capture.add(5)
-        self.assertEquals(observered_before[data_one], data_one)
-        self.assertEquals(observered_before[data_three], data_three)
-        self.assertEquals(observered_before[data_five], data_five)
         
         data_capture.build_stats()
-        observed_after = data_capture.raw_data;
+        observed = data_capture.raw_data;
 
-        self.assertEquals(observed_after[data_one], 0)
-        self.assertEquals(observed_after[data_three], 1)
-        self.assertEquals(observed_after[data_five], 2)
+        self.assertEquals(observed[data_one], 0)
+        self.assertEquals(observed[data_three], 1)
+        self.assertEquals(observed[data_five], 2)
 
 unittest.main(exit=False)
