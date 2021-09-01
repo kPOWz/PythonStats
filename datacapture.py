@@ -22,7 +22,12 @@ class DataCapture:
         self.raw_data_ascending_condensed = []
 
   def add(self, n: int):
-    self.raw_data[n] = n
+    current_value = self.raw_data[n]
+    if current_value is None:
+      self.raw_data[n] = n
+    else:
+      self.raw_data[n] = current_value + n     
+       
     return self.raw_data
 
   def build_stats(self):
@@ -30,6 +35,7 @@ class DataCapture:
         if(n != None):
             self.raw_data_ascending_condensed.append(n)
             self.raw_data[n] = len(self.raw_data_ascending_condensed) - self.zero_base_array_adjustment_factor
+
     return self.raw_data_ascending_condensed
 
   def less(self, n: int):

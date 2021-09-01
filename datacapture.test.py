@@ -16,6 +16,19 @@ class AddTest(unittest.TestCase):
         
         observed = data_capture.add(data_to_capture)
         self.assertEquals(data_to_capture, observed[data_to_capture])
+    
+    def test_add_int_more_than_once(self):
+        data_to_repeat = 3;
+        expected_summed_value_of_repeated_int = 3 + 3 + 3;
+        data_capture = DataCapture()      
+        
+        data_capture.add(data_to_repeat)
+        data_capture.add(4)
+        data_capture.add(7)
+        data_capture.add(data_to_repeat)  
+        observed = data_capture.add(data_to_repeat)
+
+        self.assertEquals(observed[data_to_repeat], expected_summed_value_of_repeated_int)
 
 class BuildStatsTest(unittest.TestCase):
 
@@ -57,5 +70,5 @@ class LessTest(unittest.TestCase):
         observed = data_capture.less(4)
 
         self.assertEquals(observed, expected_count_integers_less_than_four)
-
+        
 unittest.main(exit=False)
