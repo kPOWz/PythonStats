@@ -6,10 +6,19 @@ assume all values will be less than 1,000.
  
 Implement this challenge in whatever programming language best highlights 
 your skills (Python is our in-house language of choice). Also, please supply a README with details on how to setup and run your application.
- 
-Requirements
 
-#DataCapture
+
+# Setup & Run & Review
+ 1. Install Python3
+ 2. Clone the git repository
+ 3. navigate to the repository directory
+ 4. run the tests in `datacapture.test.py`
+    - from a command prompt this looks like `python datacapture.test.py`
+    - the last test, `test_full_challenge`, executes all of the completed challenge specs in one test
+    - the last test, `test_full_challenge`, "[KZB]" prefixed notes are from me
+ 5. check out the commits and tests other than `test_full_challenge` to see the progression
+
+# DataCapture Instructions
 The DataCapture object accepts numbers and returns an object for
 querying statistics about the inputs. Specifically, the returned object supports 
 querying how many numbers in the collection are less than a value,

@@ -91,7 +91,7 @@ class FullChallengeTest(unittest.TestCase):
     def test_full_challenge(self):
         capture = DataCapture()
  
-        # the add function impl worst case is O(1) according to https://www.python.org/dev/peps/pep-3128/#motivation  (set item)
+        # [KZB] the add function impl worst case is O(1) according to https://www.python.org/dev/peps/pep-3128/#motivation  (set item)
         capture.add(3)
         capture.add(9)
         capture.add(3)
