@@ -15,7 +15,7 @@ class AddTest(unittest.TestCase):
         data_capture = DataCapture()
         
         observed = data_capture.add(data_to_capture)
-        self.assertEquals(data_to_capture, observed[data_to_capture])
+        self.assertEqual(data_to_capture, observed[data_to_capture])
     
     def test_add_int_more_than_once(self):
         data_to_repeat = 3;
@@ -28,7 +28,7 @@ class AddTest(unittest.TestCase):
         data_capture.add(data_to_repeat)  
         observed = data_capture.add(data_to_repeat)
 
-        self.assertEquals(observed[data_to_repeat], expected_summed_value_of_repeated_int)
+        self.assertEqual(observed[data_to_repeat], expected_summed_value_of_repeated_int)
 
 class BuildStatsTest(unittest.TestCase):
 
@@ -38,7 +38,7 @@ class BuildStatsTest(unittest.TestCase):
         data_capture.add(1000)
         
         observed = data_capture.build_stats()
-        self.assertEquals(observed, [1, 1000])
+        self.assertEqual(observed, [1, 1000])
     
     def test_build_stats_records_lookup_indicies(self):
         data_one = 1;
@@ -52,9 +52,9 @@ class BuildStatsTest(unittest.TestCase):
         data_capture.build_stats()
         observed = data_capture.raw_data;
 
-        self.assertEquals(observed[data_one], (0,0))
-        self.assertEquals(observed[data_three], (1,1))
-        self.assertEquals(observed[data_five], (2,2))
+        self.assertEqual(observed[data_one], (0,0))
+        self.assertEqual(observed[data_three], (1,1))
+        self.assertEqual(observed[data_five], (2,2))
 
 class LessTest(unittest.TestCase):
 
@@ -69,7 +69,7 @@ class LessTest(unittest.TestCase):
         
         observed = data_capture.less(4)
 
-        self.assertEquals(observed, expected_count_integers_less_than_four)
+        self.assertEqual(observed, expected_count_integers_less_than_four)
 
     # !!! --- over-time --- !!!
     def test_less_duplicates(self):
