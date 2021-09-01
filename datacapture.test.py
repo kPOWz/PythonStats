@@ -86,4 +86,33 @@ class LessTest(unittest.TestCase):
 
         self.assertEqual(observed, expected_count_integers_less_than_four)
 
+class FullChallengeTest(unittest.TestCase):
+
+    def test_full_challenge(self):
+        capture = DataCapture()
+ 
+        # the add function impl worst case is O(1) according to https://www.python.org/dev/peps/pep-3128/#motivation  (set item)
+        capture.add(3)
+        capture.add(9)
+        capture.add(3)
+        capture.add(4)
+        capture.add(6)
+        
+        # [KZB] 
+        # the build_stats function impl worst case was O(n) until I added the support for repeated integers, now is quadratc
+        #   worst case quadradic (when many repeated integers) I belive could be worked around with more creative data structure
+        # 
+        # Woops! just realized I've added the stats function/s to DataCapture rather than the requested "stats" contract
+        stats = capture.build_stats()
+        
+        # [KZB] the less function impl worst case is O(1) according to https://www.python.org/dev/peps/pep-3128/#motivation  (get item)
+        less_result = capture.less(4) # should return 2 (only two values 3, 3 are less than 4)
+        self.assertEqual(less_result, 2)
+        
+        # [KZB] incomplete can use same "lookup tuples" as less to achieve worst case O(1) according to https://www.python.org/dev/peps/pep-3128/#motivation  (get item)
+        # stats.between(3, 6) # should return 4 (3, 3, 4 and 6 are between 3 and 6)
+        
+        # [KZB] incomplete can use same "lookup tuples" as less to achieve worst case O(1) according to https://www.python.org/dev/peps/pep-3128/#motivation  (get item)
+        # stats.greater(4) # should return 2 (6 and 9 are the only two values greater than 4)
+
 unittest.main(exit=False)
