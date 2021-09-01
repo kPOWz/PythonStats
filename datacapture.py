@@ -31,14 +31,22 @@ class DataCapture:
     return self.raw_data
 
   def build_stats(self):
-    for n in self.raw_data:
+    for idx, n in enumerate(self.raw_data):
         if(n != None):
-            self.raw_data_ascending_condensed.append(n)
-            self.raw_data[n] = len(self.raw_data_ascending_condensed) - self.zero_base_array_adjustment_factor
+            min_index = len(self.raw_data_ascending_condensed)
+            n_denormalized = int(n/idx);
+            
+            for nn in range(n_denormalized):
+              self.raw_data_ascending_condensed.append(idx)
+            
+            max_index =  len(self.raw_data_ascending_condensed) - self.zero_base_array_adjustment_factor
+            min_max = (min_index, max_index)
+            self.raw_data[idx] = min_max
 
     return self.raw_data_ascending_condensed
 
   def less(self, n: int):
-    stats_lookup_index = self.raw_data[n];
-    count_items_less_than_n = stats_lookup_index;
+    stats_lookup_min_max = self.raw_data[n];
+    stats_lookup_index_min = stats_lookup_min_max[0];
+    count_items_less_than_n = stats_lookup_index_min;
     return count_items_less_than_n;

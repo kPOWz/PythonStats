@@ -52,9 +52,9 @@ class BuildStatsTest(unittest.TestCase):
         data_capture.build_stats()
         observed = data_capture.raw_data;
 
-        self.assertEquals(observed[data_one], 0)
-        self.assertEquals(observed[data_three], 1)
-        self.assertEquals(observed[data_five], 2)
+        self.assertEquals(observed[data_one], (0,0))
+        self.assertEquals(observed[data_three], (1,1))
+        self.assertEquals(observed[data_five], (2,2))
 
 class LessTest(unittest.TestCase):
 
@@ -70,5 +70,20 @@ class LessTest(unittest.TestCase):
         observed = data_capture.less(4)
 
         self.assertEquals(observed, expected_count_integers_less_than_four)
+
+    # !!! --- over-time --- !!!
+    def test_less_duplicates(self):
+        expected_count_integers_less_than_four = len([3,3])
+        data_capture = DataCapture()
+        data_capture.add(3)
+        data_capture.add(9)
+        data_capture.add(3)
+        data_capture.add(4)
+        data_capture.add(6)
+        data_capture.build_stats()
         
+        observed = data_capture.less(4)
+
+        self.assertEqual(observed, expected_count_integers_less_than_four)
+
 unittest.main(exit=False)
