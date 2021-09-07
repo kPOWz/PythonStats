@@ -1,4 +1,4 @@
-#PythonStats
+# PythonStats
 
 The challenge is to create a program that computes some basic
 statistics on a collection of small positive integers. You can
