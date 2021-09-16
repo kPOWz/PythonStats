@@ -12,10 +12,10 @@ your skills (Python is our in-house language of choice). Also, please supply a R
  1. Install Python3
  2. Clone the git repository
  3. navigate to the repository directory
- 4. run the tests in `datacapture.test.py`
-    - from a command prompt this looks like `python datacapture.test.py`
-    - the last test, `test_full_challenge`, executes all of the completed challenge specs in one test
-    - the last test, `test_full_challenge`, "[KZB]" prefixed notes are from me
+ 4. run the tests in `./tests`
+    - from a command prompt this looks like `python -m unittest discover -v -s ./tests -p test_*.py`
+    - the last test in `datacapture.test.py`, `test_full_challenge`, executes all of the completed challenge specs in one test
+    - the last test in `datacapture.test.py`, `test_full_challenge`, "[KZB]" prefixed notes are from me
     - :warning: sovling for test `test_less_duplicates` I sunk extra time into beyond the parameters of the challenge (see comment above test `# !!! --- over-time --- !!!`)
  5. check out the commits and tests other than `test_full_challenge` to see the progression
 
