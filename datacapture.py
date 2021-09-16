@@ -43,4 +43,4 @@ class DataCapture:
             min_max = (min_index, max_index)
             self.raw_data[idx] = min_max
 
-    return Stats(self.raw_data)
+    return Stats(self.raw_data, self.raw_data_ascending_condensed)
