@@ -35,7 +35,6 @@ class StatsTest(unittest.TestCase):
         between_array = [2,3,3,4,6]
         expected_count_integers_between = len(between_array)
         given_lookup_array = [None, None, (0,0), (1,2), (3,3), None, (4,4), None, None, (5,6)]
-        # given_condensed_array = between_array + [9,9];
         stats = Stats(given_lookup_array, 6)
         
         observed = stats.between(2,6)
