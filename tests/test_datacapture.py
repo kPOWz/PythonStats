@@ -53,10 +53,10 @@ class BuildStatsTest(unittest.TestCase):
         
         observed_stats = data_capture.build_stats()
 
-        # how to not bleed into stats?  can't mock init or new, let it call through? 
-        # __init__ and __new__ not supported by Mock/MagicMock
+        # how to not bleed unit test into stats?  
+        # __init__ and __new__ not supported by Python Mock/MagicMock
         # https://docs.python.org/dev/library/unittest.mock.html#mocking-magic-methods
-        # assert assert_called_once_with('foo')
+        # assert assert_called_once_with(expected_population_array, 3)
         self.assertEqual(observed_stats.min_max_population_array[data_one], (0,0))
         self.assertEqual(observed_stats.min_max_population_array[data_three], (1,1))
         self.assertEqual(observed_stats.min_max_population_array[data_five], (2,2))
