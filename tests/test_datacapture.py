@@ -37,8 +37,12 @@ class BuildStatsTest(unittest.TestCase):
         data_capture.add(1)
         data_capture.add(1000)
         
-        observed = data_capture.build_stats()
-        self.assertEqual(observed, [1, 1000])
+        data_capture.build_stats()
+
+        # this will not be observed will be self.
+        # self.assertEqual(observed, [1, 1000])
+        self.assertEqual(data_capture.raw_data_ascending_condensed, [1, 1000])
+
     
     def test_build_stats_records_lookup_indicies(self):
         data_one = 1;
@@ -49,42 +53,15 @@ class BuildStatsTest(unittest.TestCase):
         data_capture.add(data_three)
         data_capture.add(data_five)
         
-        data_capture.build_stats()
-        observed = data_capture.raw_data;
+        observed_stats = data_capture.build_stats()
 
-        self.assertEqual(observed[data_one], (0,0))
-        self.assertEqual(observed[data_three], (1,1))
-        self.assertEqual(observed[data_five], (2,2))
-
-class LessTest(unittest.TestCase):
-
-    def test_less(self):
-        expected_count_integers_less_than_four = len([3])
-        data_capture = DataCapture()
-        data_capture.add(9)
-        data_capture.add(3)
-        data_capture.add(4)
-        data_capture.add(6)
-        data_capture.build_stats()
-        
-        observed = data_capture.less(4)
-
-        self.assertEqual(observed, expected_count_integers_less_than_four)
-
-    # !!! --- over-time --- !!!
-    def test_less_duplicates(self):
-        expected_count_integers_less_than_four = len([3,3])
-        data_capture = DataCapture()
-        data_capture.add(3)
-        data_capture.add(9)
-        data_capture.add(3)
-        data_capture.add(4)
-        data_capture.add(6)
-        data_capture.build_stats()
-        
-        observed = data_capture.less(4)
-
-        self.assertEqual(observed, expected_count_integers_less_than_four)
+        # how to not bleed into stats?  can't mock init or new, let it call through? 
+        # __init__ and __new__ not supported by Mock/MagicMock
+        # https://docs.python.org/dev/library/unittest.mock.html#mocking-magic-methods
+        # assert assert_called_once_with('foo')
+        self.assertEqual(observed_stats.min_max_population_array[data_one], (0,0))
+        self.assertEqual(observed_stats.min_max_population_array[data_three], (1,1))
+        self.assertEqual(observed_stats.min_max_population_array[data_five], (2,2))
 
 class FullChallengeTest(unittest.TestCase):
 
@@ -106,7 +83,7 @@ class FullChallengeTest(unittest.TestCase):
         stats = capture.build_stats()
         
         # [KZB] the less function impl worst case is O(1) according to https://www.python.org/dev/peps/pep-3128/#motivation  (get item)
-        less_result = capture.less(4) # should return 2 (only two values 3, 3 are less than 4)
+        less_result = stats.less(4) # should return 2 (only two values 3, 3 are less than 4)
         self.assertEqual(less_result, 2)
         
         # [KZB] incomplete can use same "lookup tuples" as less to achieve worst case O(1) according to https://www.python.org/dev/peps/pep-3128/#motivation  (get item)
@@ -115,4 +92,4 @@ class FullChallengeTest(unittest.TestCase):
         # [KZB] incomplete can use same "lookup tuples" as less to achieve worst case O(1) according to https://www.python.org/dev/peps/pep-3128/#motivation  (get item)
         # stats.greater(4) # should return 2 (6 and 9 are the only two values greater than 4)
 
-unittest.main(exit=False)
+# unittest.main(exit=False)

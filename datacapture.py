@@ -13,13 +13,14 @@
 # stats.between(3, 6) # should return 4 (3, 3, 4 and 6 are between 3 and 6)
  
 # stats.greater(4) # should return 2 (6 and 9 are the only two values greater than 4)
+from stats import Stats
 
 class DataCapture:
   max_integer = 1000 + 1;
   zero_base_array_adjustment_factor = 1;
   def __init__(self):
-        self.raw_data = [None for n in range(self.max_integer)]
-        self.raw_data_ascending_condensed = []
+    self.raw_data = [None for n in range(self.max_integer)]
+    self.raw_data_ascending_condensed = []
 
   def add(self, n: int):
     current_value = self.raw_data[n]
@@ -43,10 +44,5 @@ class DataCapture:
             min_max = (min_index, max_index)
             self.raw_data[idx] = min_max
 
-    return self.raw_data_ascending_condensed
+    return Stats(self.raw_data)
 
-  def less(self, n: int):
-    stats_lookup_min_max = self.raw_data[n];
-    stats_lookup_index_min = stats_lookup_min_max[0];
-    count_items_less_than_n = stats_lookup_index_min;
-    return count_items_less_than_n;
