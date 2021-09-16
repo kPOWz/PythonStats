@@ -42,6 +42,8 @@ class DataCapture:
             max_index =  self.count_num_integers - self.zero_base_array_adjustment_factor
 
             min_max = (min_index, max_index)
+            
+            # typically I would have done this in a different array rather than mutating the shape of the original; in this case i'm more concioius of space complexity
             self.raw_data[idx] = min_max
 
     # odd for the two classes to share all the base/sample data, but probably odder still to make Stats a DataCapture given the requirement that a DataCapture function return a Stats instance
