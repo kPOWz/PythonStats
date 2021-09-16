@@ -35,14 +35,12 @@ class DataCapture:
     for idx, n in enumerate(self.raw_data):
         if(n != None):
             min_index = len(self.raw_data_ascending_condensed)
-            n_denormalized = int(n/idx);
-            
-            for nn in range(n_denormalized):
-              self.raw_data_ascending_condensed.append(idx)
+            n_denormalized = int(n/idx); 
+
+            self.raw_data_ascending_condensed.extend([idx for n in range(n_denormalized)])
             
             max_index =  len(self.raw_data_ascending_condensed) - self.zero_base_array_adjustment_factor
             min_max = (min_index, max_index)
             self.raw_data[idx] = min_max
 
     return Stats(self.raw_data)
-

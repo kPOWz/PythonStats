@@ -76,10 +76,7 @@ class FullChallengeTest(unittest.TestCase):
         capture.add(6)
         
         # [KZB] 
-        # the build_stats function impl worst case was O(n) until I added the support for repeated integers, now is quadratc
-        #   worst case quadradic (when many repeated integers) I belive could be worked around with more creative data structure
-        # 
-        # Woops! just realized I've added the stats function/s to DataCapture rather than the requested "stats" contract
+        # the build_stats function impl worst case is O(n)
         stats = capture.build_stats()
         
         # [KZB] the less function impl worst case is O(1) according to https://www.python.org/dev/peps/pep-3128/#motivation  (get item)
