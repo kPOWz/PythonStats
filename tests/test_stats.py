@@ -1,7 +1,7 @@
 import unittest
 from stats import Stats
 
-class LessTest(unittest.TestCase):
+class StatsTest(unittest.TestCase):
 
     def test_less(self):
         expected_count_integers_less_than_four = len([3])
@@ -21,9 +21,11 @@ class LessTest(unittest.TestCase):
         self.assertEqual(observed, expected_count_integers_less_than_four)
     
     def test_greater(self):
-        expected_count_integers_more_than_four = len([6, 6, 9])
-
-        stats = Stats([None, None, None,(0,1),(2,2),None, (3,4), None, None, (5,5)], [3,3,4,6,6,9])
+        greater_array = [6, 6, 9];
+        expected_count_integers_more_than_four = len(greater_array)
+        given_lookup_array = [None, None, None,(0,1),(2,2),None, (3,4), None, None, (5,5)];
+        given_condensed_array = [3,3,4] + greater_array;
+        stats = Stats(given_lookup_array, given_condensed_array)
         
         observed = stats.greater(4)
 
