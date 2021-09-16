@@ -33,4 +33,4 @@ class Stats:
     return count_items_greater_than_n;
 
   def between(self, n: int, m: int):
-    return len(self.condensed_population) - self.less(3) - self.greater(m)
+    return len(self.condensed_population) - self.less(n) - self.greater(m)
