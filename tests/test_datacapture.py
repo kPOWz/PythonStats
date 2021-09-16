@@ -84,9 +84,9 @@ class FullChallengeTest(unittest.TestCase):
         self.assertEqual(less_result, 2)
         
         # [KZB] incomplete can use same "lookup tuples" as less to achieve worst case O(1) according to https://www.python.org/dev/peps/pep-3128/#motivation  (get item)
-        # stats.between(3, 6) # should return 4 (3, 3, 4 and 6 are between 3 and 6)
+        stats.between(3, 6) # should return 4 (3, 3, 4 and 6 are between 3 and 6)
         
         # [KZB] incomplete can use same "lookup tuples" as less to achieve worst case O(1) according to https://www.python.org/dev/peps/pep-3128/#motivation  (get item)
-        # stats.greater(4) # should return 2 (6 and 9 are the only two values greater than 4)
+        stats.greater(4) # should return 2 (6 and 9 are the only two values greater than 4)
 
 # unittest.main(exit=False)

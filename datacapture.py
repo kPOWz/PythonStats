@@ -43,4 +43,5 @@ class DataCapture:
             min_max = (min_index, max_index)
             self.raw_data[idx] = min_max
 
+    # odd for the two classes to share all the base/sample data, but probably odder still to make Stats a DataCapture given the requirement that a DataCapture function return a Stats instance
     return Stats(self.raw_data, self.raw_data_ascending_condensed)
