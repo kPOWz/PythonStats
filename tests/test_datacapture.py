@@ -39,9 +39,7 @@ class BuildStatsTest(unittest.TestCase):
         
         data_capture.build_stats()
 
-        # this will not be observed will be self.
-        # self.assertEqual(observed, [1, 1000])
-        self.assertEqual(data_capture.raw_data_ascending_condensed, [1, 1000])
+        self.assertEqual(data_capture.count_num_integers, len([1, 1000]))
 
     
     def test_build_stats_records_lookup_indicies(self):

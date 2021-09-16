@@ -20,7 +20,7 @@ class DataCapture:
   zero_base_array_adjustment_factor = 1;
   def __init__(self):
     self.raw_data = [None for n in range(self.max_integer)]
-    self.raw_data_ascending_condensed = []
+    self.count_num_integers = 0
 
   def add(self, n: int):
     current_value = self.raw_data[n]
@@ -34,14 +34,15 @@ class DataCapture:
   def build_stats(self):
     for idx, n in enumerate(self.raw_data):
         if(n != None):
-            min_index = len(self.raw_data_ascending_condensed)
+            min_index = self.count_num_integers
             n_denormalized = int(n/idx); 
 
-            self.raw_data_ascending_condensed.extend([idx for n in range(n_denormalized)])
+            self.count_num_integers += n_denormalized
             
-            max_index =  len(self.raw_data_ascending_condensed) - self.zero_base_array_adjustment_factor
+            max_index =  self.count_num_integers - self.zero_base_array_adjustment_factor
+
             min_max = (min_index, max_index)
             self.raw_data[idx] = min_max
 
     # odd for the two classes to share all the base/sample data, but probably odder still to make Stats a DataCapture given the requirement that a DataCapture function return a Stats instance
-    return Stats(self.raw_data, self.raw_data_ascending_condensed)
+    return Stats(self.raw_data, self.count_num_integers)
