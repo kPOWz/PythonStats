@@ -30,3 +30,14 @@ class StatsTest(unittest.TestCase):
         observed = stats.greater(4)
 
         self.assertEqual(observed, expected_count_integers_more_than_four)
+    
+    def test_between(self):
+        between_array = [3,3,4,6]
+        expected_count_integers_between = len(between_array)
+        given_lookup_array = [None, None, (0,0), (1,2), (3,3), None, (4,4), None, None, (5,6)]
+        given_condensed_array = [2] + between_array + [9,9];
+        stats = Stats(given_lookup_array, given_condensed_array)
+        
+        observed = stats.between(3,6)
+
+        self.assertEqual(observed, expected_count_integers_between)

@@ -34,3 +34,6 @@ class Stats:
     stats_lookup_index_max = stats_lookup_min_max[1];
     count_items_greater_than_n = len(self.condensed_population) - stats_lookup_index_max - 1;
     return count_items_greater_than_n;
+
+  def between(self, n: int, m: int):
+    return len(self.condensed_population) - self.less(3) - self.greater(m)
